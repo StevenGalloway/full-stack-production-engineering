@@ -1,0 +1,13 @@
+flowchart TD
+    A[User drags a handle] --> B[Handle position written to world-space state]
+    B --> C{Shared proximity check:<br/>is a required element within range?}
+    C -->|No| D[Per-handle visual warning shown]
+    C -->|Yes| E[No visual warning]
+    B --> F[Group pass/fail evaluator re-runs]
+    F --> G{All rules pass,<br/>including proximity check?}
+    G -->|No| H[Group renders as failing]
+    H --> I[Failure dialog available,<br/>listing every applicable reason]
+    G -->|Yes| J[Group renders as passing]
+
+    K[Element predates this feature:<br/>handle fields absent] --> L[Exempt from proximity check entirely]
+    L --> F
