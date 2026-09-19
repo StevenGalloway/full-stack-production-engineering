@@ -1,0 +1,11 @@
+flowchart TD
+    A[Customer report received] --> B[Client proposes a hypothesis]
+    B --> C[Trace the path layer by layer:<br/>write path -> data sync -> route access control]
+    C --> D{Evidence supports<br/>the hypothesis?}
+    D -->|No, at every layer| E[Hypothesis ruled out with evidence]
+    E --> F[Continue tracing until an actual<br/>divergence point is found]
+    F --> G[Root cause identified]
+    D -->|Yes| G
+    G --> H[Explain root cause in plain terms]
+    H --> I[Give a concrete diagnostic question<br/>to disambiguate from user error]
+    I --> J[Recommend fix, scoped separately<br/>from the immediate diagnosis]
